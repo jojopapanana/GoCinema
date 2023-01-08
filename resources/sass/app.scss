@@ -1,0 +1,21 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+#search-button:hover{
+    background-color: rgb(235, 171, 93);
+}
+
+.nav-item:hover, .nav-item dropdown:hover{
+    background-color: rgb(235, 171, 93);
+    border-radius: 10px;
+}
+
+#movies:hover{
+    background-color: rgb(224, 223, 223);
+}
