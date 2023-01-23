@@ -5,9 +5,11 @@
             @foreach ($movies as $movie)
                 @if($movie->status == 0)
                 <div class="rounded p-3 shadow col-2" style="height: 55vh" id="movies">
-                    <a href="{{ route('details') }}" class="text-decoration-none" style="color: black">
+                    <a href="" class="text-decoration-none" style="color: black">
                         <div class="rounded p-2">
-                            <img src="images/avatar.jpg" alt="" class="rounded mx-auto d-block" style="height: 35vh">
+                            <div class="rounded d-flex justify-content-center">
+                                <img src="/storage/images/movies/{{ $movie->picture }}" alt="" class="rounded" style="height: 35vh">
+                            </div>
                             <p class="fw-bold pt-2 text-center">{{ $movie->movieName }}</p>
                         </div>
                         <div class="d-flex gap-3 justify-content-center">
@@ -18,5 +20,10 @@
                 </div>
                 @endif
             @endforeach
+        </div>
+    </div>
     
+    <div class="d-flex justify-content-center p-3">
+        <a class="btn btn-primary fw-bold" style="width: 10vw; height: 5vh" href="{{ route('movies.create') }}">ADD MOVIE</a>
+    </div>
 </x-layout>

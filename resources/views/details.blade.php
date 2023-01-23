@@ -1,9 +1,7 @@
-<x-layout title="Details">
-    @foreach($movies as $movie)
-        @if($id == $movie->id)
+<x-layout title="Movie Details">
         <div class="p-3 text-center">
                 <div class="pb-5 pt-5">
-                    <img src="{{ asset ('images/avatar.jpg') }}" alt="" class="rounded" style="height: 45vh">
+                    <img src="/storage/images/movies/{{ $movie->picture }}" alt="" class="rounded" style="height: 45vh">
                 </div>
 
                 <p class="fw-bold fs-4">{{ $movie->movieName }}</p>
@@ -12,7 +10,7 @@
                     <p class="fw-semibold fs-5">{{ $movie->movieRating }}</p>
                     <div class="d-flex gap-1">
                         <i class="bi bi-clock fw-bold pt-1"></i>
-                        <p class="fw-semibold fs-5">192 minutes</p>
+                        <p class="fw-semibold fs-5">{{ $movie->movieDuration }} minutes</p>
                     </div>
                 </div>
 
@@ -34,9 +32,30 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
-            
-        @endif
-    @endforeach
+
+                <div class="d-flex justify-content-center p-3 gap-5">
+                    <button type="button" class="btn btn-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal" style="height: 5vh; width: 10vw;">
+                        DELETE
+                    </button>
+
+                    <a class="btn btn-warning fw-bold" style="width: 10vw; height: 5vh" href="{{ route('movies.edit', $movie->id) }}">EDIT</a>
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body fs-4">
+                            Are you sure to delete this movie?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <form method="POST" action="{{ route('movies.destroy', $movie->id) }}">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="btn btn-danger">Delete</button>
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
 </x-layout>

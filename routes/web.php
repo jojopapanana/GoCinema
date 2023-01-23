@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UpcomingController;
-use App\Http\Controllers\DetailsController;
+use App\Http\Controllers\MoviesController;
 
 
 /*
@@ -23,9 +23,14 @@ Route::get('/', function () {
 });
 
 // Route::resource('home', HomeController::class);
-Route::get('/upcoming', [UpcomingController::class, 'index'])->name('upcoming');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/details/{id}', [DetailsController::class, 'index'])->name('details');
-// Route::resource('upcoming', UpcomingController::class);
+// Route::get('/upcoming', [UpcomingController::class, 'index'])->name('upcoming');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/details/{id}', [DetailsController::class, 'index'])->name('details');
+
+Route::get('movies/upcoming', [MoviesController::class, 'upcoming']);
+Route::resource('movies', MoviesController::class);
+Route::get('/bali', function () {
+    return view('cinemas.bali');
+});
 
 // Route::view('upcoming', 'upcoming');

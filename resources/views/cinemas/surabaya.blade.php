@@ -1,4 +1,4 @@
-<x-layout title="Home">
+<x-layout title="Playing in SURABAYA">
     <div class="p-5">
         <div class="rounded shadow" style="background-color: gray; height: 40vh;"></div>
         <div class="d-flex gap-5 mt-5 row justify-content-evenly w-100 mx-auto">
